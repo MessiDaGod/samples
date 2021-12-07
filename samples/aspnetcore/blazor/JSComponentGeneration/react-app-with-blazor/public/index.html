@@ -10,6 +10,17 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
 
-    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="_framework/blazor.webassembly.js" autostart="false"></script>
+     <!-- https://issueexplorer.com/issue/dotnet/aspnetcore/37075 -->
+    <script>
+
+      Blazor
+          .start()
+          .then(() => {
+              const containerElement = document.querySelector('#app')
+              return Blazor.rootComponents.add(containerElement, 'app', {});
+          })
+          .catch((error) => (console.log("")));
+  </script>
   </body>
 </html>
